@@ -3,7 +3,9 @@ import 'package:ecommerce_app/common/widgets/custom_shapes/container/primary_hea
 import 'package:ecommerce_app/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:ecommerce_app/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:ecommerce_app/common/widgets/texts/section_heading.dart';
+import 'package:ecommerce_app/features/personalization/screens/address/address.dart';
 import 'package:ecommerce_app/features/personalization/screens/profile/profile.dart';
+import 'package:ecommerce_app/features/shop/screens/order/order.dart';
 import 'package:ecommerce_app/utils/constants/colors.dart';
 import 'package:ecommerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +63,9 @@ class SettingScreen extends StatelessWidget {
                     title: "My address",
                     subtitle: "Set shopping delivery",
                     icon: Iconsax.safe_home,
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(const UserAddressScreen());
+                    },
                   ),
                   TSettingMenuTile(
                     title: "My Cart",
@@ -73,7 +77,9 @@ class SettingScreen extends StatelessWidget {
                     title: "My orders",
                     subtitle: "In-progress and completed orders",
                     icon: Iconsax.bag_tick,
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const OrderScreen());
+                    },
                   ),
                   TSettingMenuTile(
                     title: "Bank Account ",
