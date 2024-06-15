@@ -2,8 +2,11 @@
 
 /// This class contains all the App Images in String formats.
 class TImages {
+  static const String successfullyRegistrationAnimation = "assets/images/animations/120978-payment-successful.json";
+
+  static const String loadingAnimation = "assets/images/animations/cloud-uploading-animation.json";
   static const String dockerAnimation =
-      "assets/images/animations/loader-animation.json";
+      "assets/images/animations/141594-animation-of-docer.json";
   // -- App Logos
   static const String darkAppLogo =
       "assets/logos/t-store-splash-logo-black.png";

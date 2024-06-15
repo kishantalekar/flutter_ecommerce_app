@@ -1,14 +1,21 @@
-import 'package:ecommerce_app/utils/constants/image_strings.dart';
-import 'package:ecommerce_app/utils/constants/sizes.dart';
-import 'package:ecommerce_app/utils/constants/text_strings.dart';
-import 'package:ecommerce_app/utils/helpers/helper_functions.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:ecommerce_app/features/authentication/controllers/forget_password/forget_password_controller.dart';
+import 'package:ecommerce_app/features/authentication/screens/login/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ResetPassword extends StatelessWidget {
-  const ResetPassword({super.key});
+import 'package:ecommerce_app/utils/constants/image_strings.dart';
+import 'package:ecommerce_app/utils/constants/sizes.dart';
+import 'package:ecommerce_app/utils/constants/text_strings.dart';
+import 'package:ecommerce_app/utils/helpers/helper_functions.dart';
 
+class ResetPassword extends StatelessWidget {
+  const ResetPassword({
+    Key? key,
+    required this.email,
+  }) : super(key: key);
+  final String email;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +58,7 @@ class ResetPassword extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => Get.offAll(() => LoginScreen()),
                   child: const Text(TTexts.tContinue),
                 ),
               ),
@@ -59,7 +66,8 @@ class ResetPassword extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => ForgetPasswordController.instance
+                      .resendPasswordResetEmail(email),
                   child: const Text(TTexts.resendEmail),
                 ),
               ),

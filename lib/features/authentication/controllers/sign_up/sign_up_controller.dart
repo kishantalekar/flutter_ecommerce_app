@@ -28,7 +28,7 @@ class SignUpController extends GetxController {
   Future<void> signUp() async {
     try {
       TFullScreenLoader.openLoadingPage(
-          'We are processing your information', TImages.dockerAnimation);
+          'We are processing your information', TImages.loadingAnimation);
 
       //check internet connectivity
 
@@ -67,11 +67,11 @@ class SignUpController extends GetxController {
           title: 'Congratulations',
           message: 'Your account has been created! verify email to continue');
 
-      Get.to(() => const VerfiyEmailScreen());
+      Get.to(() =>  VerfiyEmailScreen(email: email.text.trim(),));
     } catch (e) {
-      TFullScreenLoader.errorSnackBar(title: 'oh Snap!', message: e.toString());
-    } finally {
       TFullScreenLoader.stopLoading();
+      TFullScreenLoader.errorSnackBar(title: 'oh Snap!', message: e.toString());
+
     }
   }
 }

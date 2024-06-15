@@ -1,4 +1,6 @@
 import 'package:ecommerce_app/common/widgets/success_screen/success_screen.dart';
+import 'package:ecommerce_app/data/repositories/auth/authentication_repository.dart';
+import 'package:ecommerce_app/features/authentication/controllers/sign_up/verify_controller.dart';
 import 'package:ecommerce_app/features/authentication/screens/login/login.dart';
 import 'package:ecommerce_app/utils/constants/image_strings.dart';
 import 'package:ecommerce_app/utils/constants/sizes.dart';
@@ -9,18 +11,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class VerfiyEmailScreen extends StatelessWidget {
-  const VerfiyEmailScreen({super.key});
-
+  const VerfiyEmailScreen({super.key, this.email});
+  final String? email;
   @override
   Widget build(BuildContext context) {
+final controller = Get.put(VerifyController());
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-              onPressed: () {
-                Get.offAll(() => const LoginScreen());
-              },
+              onPressed: () =>AuthenticationRepository.instance.logout(),
               icon: const Icon(CupertinoIcons.clear))
         ],
       ),
@@ -47,7 +48,7 @@ class VerfiyEmailScreen extends StatelessWidget {
                 height: TSizes.spaceBtwItems,
               ),
               Text(
-                "kishantalekar124@gmail.com",
+                email?? '',
                 style: Theme.of(context).textTheme.labelLarge,
                 textAlign: TextAlign.center,
               ),
@@ -68,16 +69,7 @@ class VerfiyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {
-                    Get.to(() => SuccessScreen(
-                          image: TImages.staticSuccessIllustration,
-                          title: TTexts.yourAccountCreatedTitle,
-                          subtitle: TTexts.yourAccountCreatedSubTitle,
-                          onPressed: () {
-                            Get.to(() => const LoginScreen());
-                          },
-                        ));
-                  },
+                  onPressed:()=>controller.checkEmailVerified(),
                   child: const Text(TTexts.confirmEmail),
                 ),
               ),
@@ -87,7 +79,7 @@ class VerfiyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () =>controller.sendEmailVerification(),
                   child: const Text(TTexts.resendEmail),
                 ),
               )
