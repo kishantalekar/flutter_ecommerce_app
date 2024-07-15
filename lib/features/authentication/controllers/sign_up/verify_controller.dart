@@ -41,7 +41,7 @@ class VerifyController extends GetxController {
       if (user?.emailVerified ?? false) {
         timer.cancel();
         Get.off(() => SuccessScreen(
-            image: TImages.successfullyRegistrationAnimation,
+            image: TImages.staticSuccessIllustration,
             title: TTexts.yourAccountCreatedTitle,
             subtitle: TTexts.yourAccountCreatedSubTitle,
             onPressed: () =>

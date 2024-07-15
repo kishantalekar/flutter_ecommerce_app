@@ -6,8 +6,8 @@ import 'package:ecommerce_app/utils/helpers/helper_functions.dart';
 
 class UserModel {
   final String id;
-  final String firstname;
-  final String lastname;
+  String firstname;
+  String lastname;
   final String username;
   final String email;
   final String phoneNumber;
